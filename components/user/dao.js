@@ -18,5 +18,22 @@ module.exports = {
                     });
                 });
         });
+    }, 
+    createUser(){
+        return new promise((resolve, reject) => {
+            conn.promise().query()
+                .then(([rows]) => {
+                    return resolve({
+                        success: true,
+                        value: rows
+                    });
+                })
+                .catch(error => {
+                    return reject({
+                        success: false,
+                        value: error
+                    })
+                });
+        })
     }
 }
