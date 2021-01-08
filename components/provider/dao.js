@@ -19,5 +19,16 @@ module.exports = {
                     });
                 })
         });
+    },
+    createProdiver(){
+        return new Promise((resolve, reject) => {
+            conn.promise().query('INSERT INTO provider')
+                .then(([rows]) => {
+                    return resolve({
+                        success: true,
+                        value: rows
+                    })
+                })
+        });
     }
 }
