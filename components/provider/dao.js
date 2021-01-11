@@ -5,7 +5,7 @@ const conn = connection();
 module.exports = {
     getProviders(){
         return new Promise((resolve, reject) => {
-            conn.promise().query('SELECT * FROM provider')
+            conn.promise().query('CALL getAllProviders()')
                 .then(([rows]) => {
                     return resolve({
                         success: true,
@@ -20,15 +20,21 @@ module.exports = {
                 })
         });
     },
-    createProdiver(){
+    createProdiver({name, email}){
         return new Promise((resolve, reject) => {
-            conn.promise().query('INSERT INTO provider')
+            conn.promise().query('CALL createProvider(?, ?)', [name, email])
                 .then(([rows]) => {
                     return resolve({
                         success: true,
                         value: rows
                     })
                 })
+                .catch( error => {
+                    return reject({
+                        success: false,
+                        value: error
+                    });
+                });
         });
     }
 }

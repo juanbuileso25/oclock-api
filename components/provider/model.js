@@ -8,5 +8,12 @@ module.exports = {
         } catch (error) {
             return error;
         }
+    },
+    async createProdiver({name, email}){
+        try {
+            return await dao.createProdiver({name, email})
+        } catch (error) {
+            return error
+        }
     }
 }

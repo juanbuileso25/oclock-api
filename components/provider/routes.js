@@ -4,6 +4,7 @@ const controller = require('./controller');
 
 router.route('/')
 .get(controller.getProviders)
+.post(controller.createProvider)
 
 
 module.exports = router;
