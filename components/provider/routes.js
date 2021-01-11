@@ -8,6 +8,7 @@ router.route('/')
 
 router.route('/:id')
 .put(controller.updateProvider)
+.delete(controller.deleteProvider)
 
 
 module.exports = router;

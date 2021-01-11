@@ -1,4 +1,4 @@
-const { getProviders, updateProvider } = require('./dao');
+const { getProviders, updateProvider, deleteProvider } = require('./dao');
 const dao = require('./dao');
 
 module.exports = {
@@ -21,6 +21,13 @@ module.exports = {
             return await dao.updateProvider({id, name, email, state});
         } catch (error) {
             return error;
+        }
+    },
+    async deleteProvider({id}){
+        try {
+            return await dao.deleteProvider({id});
+        } catch (error) {
+            return error
         }
     }
 }
