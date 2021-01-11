@@ -6,5 +6,8 @@ router.route('/')
 .get(controller.getProviders)
 .post(controller.createProvider)
 
+router.route('/:id')
+.put(controller.updateProvider)
+
 
 module.exports = router;
