@@ -4,7 +4,7 @@ const conn = connection();
 module.exports = {
     getUsers(){
         return new Promise((resolve, reject) => {
-            conn.promise().query('SELECT * FROM user')
+            conn.promise().query('CALL getUsers()')
                 .then(([rows])=> {
                     return resolve({
                         success: true,
@@ -19,21 +19,21 @@ module.exports = {
                 });
         });
     }, 
-    createUser(){
-        return new promise((resolve, reject) => {
-            conn.promise().query()
+    createUser({name, email, password, role}){
+        return new Promise((resolve, reject) => {
+            conn.promise().query('CALL createUser(?,?,?,?)', [name, email, password, role])
                 .then(([rows]) => {
                     return resolve({
                         success: true,
                         value: rows
-                    });
+                    })
                 })
-                .catch(error => {
+                .catch( error => {
                     return reject({
                         success: false,
                         value: error
-                    })
+                    });
                 });
-        })
+        });
     }
 }
