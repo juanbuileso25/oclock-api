@@ -1,4 +1,4 @@
-const { getUsers, createUser, updateUser } = require('./dao');
+const { getUsers, createUser, updateUser, deleteUser } = require('./dao');
 const model = require('./model');
 const bcrypt = require('bcrypt');
 
@@ -26,6 +26,13 @@ module.exports = {
         let state = req.body.state;
 
         const user = await model.updateUser({id, name, email, password, role, state});
+
+        res.send(user);
+    },
+    async deleteUser(req, res){
+        let id = req.params.id;
+
+        const user = await model.deleteUser({id});
 
         res.send(user);
     }
