@@ -1,7 +1,14 @@
-const { getUsers, createUser, updateUser, deleteUser } = require('./dao.js');
+const { getUsers, createUser, updateUser, deleteUser, getOneUser } = require('./dao.js');
 const dao = require('./dao.js');
 
 module.exports = {
+    async getOneUser({id}){
+        try {
+            return await dao.getOneUser({id});
+        } catch (error) {
+            return error;
+        }
+    },
     async getUsers(){
         try {
             return await dao.getUsers();

@@ -7,6 +7,7 @@ router.route('/')
 .post(controller.createUser)
 
 router.route('/:id')
+.get(controller.getOneUser)
 .put(controller.updateUser)
 .delete(controller.deleteUser)
 

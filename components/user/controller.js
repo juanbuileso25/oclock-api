@@ -1,8 +1,13 @@
-const { getUsers, createUser, updateUser, deleteUser } = require('./dao');
+const { getUsers, createUser, updateUser, deleteUser, getOneUser } = require('./dao');
 const model = require('./model');
 const bcrypt = require('bcrypt');
 
 module.exports = {
+    async getOneUser(req, res){
+        let id = req.params.id;
+        const user = await model.getOneUser({id});
+        res.send(user);
+    },
     async getUsers(req, res){
         const users = await model.getUsers();
         res.send(users);

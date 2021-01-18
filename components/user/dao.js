@@ -2,6 +2,23 @@ const connection = require('../../services/BDConnection/db');
 const conn = connection();
 
 module.exports = {
+    getOneUser({id}){
+        return new Promise((resolve, reject) => {
+            conn.promise().query('CALL getOneUser(?)', [id])
+                .then(([rows]) => {
+                    return resolve({
+                        success: true,
+                        value: rows
+                    });
+                })
+                .catch( error => {
+                    return reject({
+                        success: false,
+                        value: error
+                    });
+                });
+        });
+    },
     getUsers(){
         return new Promise((resolve, reject) => {
             conn.promise().query('CALL getAllUsers()')

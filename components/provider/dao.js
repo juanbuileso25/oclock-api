@@ -3,6 +3,23 @@ const conn = connection();
 
 
 module.exports = {
+    getOneProvider({id}){
+        return new Promise((resolve, reject) => {
+            conn.promise().query('CALL getOneProvider(?)', [id])
+                .then(([rows]) => {
+                    return resolve({
+                        success: true,
+                        value: rows
+                    });
+                })
+                .catch(error => {
+                    return reject({
+                        success: false,
+                        value: error
+                    });
+                })
+        });
+    },
     getProviders(){
         return new Promise((resolve, reject) => {
             conn.promise().query('CALL getAllProviders()')
