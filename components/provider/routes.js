@@ -7,6 +7,7 @@ router.route('/')
 .post(controller.createProvider)
 
 router.route('/:id')
+.get(controller.getOneProvider)
 .put(controller.updateProvider)
 .delete(controller.deleteProvider)
 

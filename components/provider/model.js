@@ -1,7 +1,15 @@
+const { getOneUser } = require('../user/dao');
 const { getProviders, updateProvider, deleteProvider } = require('./dao');
 const dao = require('./dao');
 
 module.exports = {
+    async getOneProvider({id}){
+        try {
+            return await dao.getOneProvider({id});
+        } catch (error) {
+            return error;
+        }
+    },
     async getProviders(){
         try {
             return await dao.getProviders();

@@ -1,7 +1,12 @@
-const { updateProvider, deleteProvider } = require('./dao');
+const { updateProvider, deleteProvider, getOneProvider } = require('./dao');
 const model = require('./model');
 
 module.exports = {
+    async getOneProvider(req, res){
+        let id = req.params.id;
+        const provider = await model.getOneProvider({id});
+        res.send(provider);
+    },
     async getProviders(req, res){
         const providers = await model.getProviders();
         res.send(providers);
