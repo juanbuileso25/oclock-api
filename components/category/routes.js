@@ -6,6 +6,7 @@ router.route('/')
 .get(controller.getAllCategory)
 
 
-
+router.route('/:id')
+.get(controller.getOneCategory)
 
 module.exports = router;
